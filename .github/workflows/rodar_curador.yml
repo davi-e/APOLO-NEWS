@@ -1,0 +1,29 @@
+name: Executar Curador de Notícias Diário
+
+on:
+  schedule:
+    # O horário usa o padrão Cron em UTC. 09:00 UTC é igual a 06:00 no horário de Brasília.
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Permite que você rode o script manualmente quando quiser
+
+jobs:
+  rodar-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Baixar o código do repositório
+      uses: actions/checkout@v4
+
+    - name: Instalar o Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
+    - name: Instalar Dependências
+      run: npm install
+
+    - name: Executar o Script de Coleta e Envio
+      env:
+        RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      run: node index.js
