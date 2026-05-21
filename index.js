@@ -8,7 +8,7 @@ const parser = new Parser();
 // 1. INSIRA AQUI OS FEEDS RSS DOS SITES QUE VOCÊ QUER ACOMPANHAR
 const FEEDS = [
   //'https://tabnews.com.br/recentes/rss', // Exemplo: Tabnews
-  'https://g1.globo.com/rss/g1/tecnologia-e-games/' // Exemplo: G1 Tecnologia
+  'https://g1.globo.com/dynamo/tecnologia/rss2.xml' // Exemplo: G1 Tecnologia
 ];
 
 async function executarCuradoria() {
